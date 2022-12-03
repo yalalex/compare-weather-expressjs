@@ -1,4 +1,4 @@
-module.exports.cities = [
+exports.cities = [
   { name: 'Amsterdam', country: 'Netherlands', lat: 52.37, lon: 4.89 },
   { name: 'Austin', country: 'United States', lat: 30.27, lon: -97.74 },
   { name: 'Bali', country: 'Indonesia', lat: -8.67, lon: 115.21 },

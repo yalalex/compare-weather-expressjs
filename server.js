@@ -2,9 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const schedule = require('node-schedule');
+
 const { getCurrent, getDaily } = require('./src/weather');
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 
 // getCurrent();
 
@@ -33,8 +35,6 @@ app.use(
 );
 
 app.use('/api', require('./src/routes'));
-
-const PORT = process.env.PORT || 5000;
 
 connectDB().then(() => {
   app.listen(PORT, () => {

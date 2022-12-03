@@ -5,12 +5,13 @@ const Current = require('../models/Current');
 const Daily = require('../models/Daily');
 const Archive = require('../models/Archive');
 
-const cities = require('./cities');
+const { cities } = require('./cities');
 
 const OPENWEATHERMAP_API_KEY = process.env.OPENWEATHERMAP_API_KEY;
 const WEATHERBIT_API_KEY = process.env.WEATHERBIT_API_KEY;
 
 exports.getCurrent = async function () {
+  console.log('Updating current weather...');
   const time = Date.now();
   const lastUpdate = await Current.find().sort({ _id: -1 }).limit(1);
   if (time - lastUpdate[0].time < 270000) return;
@@ -46,6 +47,7 @@ exports.getCurrent = async function () {
 };
 
 exports.getDaily = async function () {
+  console.log('Updating daily forecast...');
   const time = new Date();
   const minutes = time.getMinutes();
   const places = cities.slice(minutes, minutes + 5);
